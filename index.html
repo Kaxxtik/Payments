@@ -1,116 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ICACCP 2025 | Payment Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://www.icaccpa.in/favicon.ico" type="image/x-icon">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f4f6f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f6fa;
       margin: 0;
       padding: 0;
     }
     .container {
-      max-width: 480px;
+      max-width: 500px;
       margin: 60px auto;
       background: #fff;
       padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
     }
-    .header {
+    .logo {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    .header img {
-      max-height: 60px;
+    .logo img {
+      max-width: 250px;
     }
-    .header h2 {
-      margin-top: 10px;
-      color: #333;
+    h2 {
+      text-align: center;
+      color: #2f3640;
     }
     label {
-      font-weight: 600;
-      margin-top: 20px;
       display: block;
+      margin-top: 20px;
+      font-weight: 600;
     }
     input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border-radius: 8px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
-    .btn {
-      background: #0b72e7;
+    .pay-button {
+      width: 100%;
+      margin-top: 30px;
+      background-color: #27ae60;
       color: #fff;
       border: none;
-      padding: 12px;
-      width: 100%;
-      border-radius: 10px;
-      font-weight: 600;
+      padding: 14px;
       font-size: 16px;
-      margin-top: 30px;
+      font-weight: bold;
+      border-radius: 8px;
       cursor: pointer;
     }
-    .success {
-      display: none;
-      background: #e6ffed;
-      border: 1px solid #25b46b;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 12px;
-      color: #216e4b;
+    .pay-button:hover {
+      background-color: #219150;
     }
-    .transaction-id {
-      font-weight: bold;
-      color: #0a6d25;
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <img src="https://icaccpa.in/assets/images/logo.png" alt="ICACCP 2025 Logo">
-      <h2>Publication Fee Payment</h2>
-      <p>5th International Conference on Advanced Computational and Communication Paradigms</p>
+    <div class="logo">
+      <img src="https://www.icaccpa.in/assets/images/logo.png" alt="ICACCP 2025 Logo" />
     </div>
+    <h2>Conference Fee Payment</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="e.g. Aryan Sharma" required />
 
-    <form id="paymentForm">
-      <label>Author Full Name</label>
-      <input type="text" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="e.g. aryan@email.com" required />
 
-      <label>Email Address</label>
-      <input type="email" required>
+      <label for="paper">Paper Title</label>
+      <input type="text" id="paper" placeholder="e.g. Machine Learning-Based Anomaly Detection..." required />
 
-      <label>Paper Title</label>
-      <input type="text" value="Machine Learning-Based Anomaly Detection for Continuous Integration and Delivery">
+      <label>Amount</label>
+      <input type="text" value="₹4000 INR" disabled />
 
-      <label>Amount (INR)</label>
-      <input type="text" value="4000" disabled>
-
-      <button type="submit" class="btn">Pay Now</button>
+      <button type="submit" class="pay-button">Proceed to Pay</button>
     </form>
-
-    <div class="success" id="successMsg">
-      ✅ Payment of ₹4000 received successfully.<br>
-      Transaction ID: <span class="transaction-id">RZP-ICACCP2025-48392</span><br>
-      A confirmation email has been sent to your registered email.
+    <div class="footer">
+      © 2025 ICACCP Conference Committee
     </div>
   </div>
-
-  <script>
-    const form = document.getElementById("paymentForm");
-    const success = document.getElementById("successMsg");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      form.style.display = "none";
-      success.style.display = "block";
-    });
-  </script>
 </body>
 </html>
