@@ -6,6 +6,7 @@
   <title>ICACCP 2025 | Payment Portal</title>
   <link rel="icon" href="https://www.icaccpa.in/favicon.ico" type="image/x-icon">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     :root {
       --primary: #5469d4;
@@ -72,8 +73,10 @@
     
     .logo img {
       width: 80px;
-      height: auto;
+      height: 80px;
       margin-right: 15px;
+      border-radius: 50%; /* Make logo round */
+      object-fit: cover;
     }
     
     .logo-text {
@@ -252,15 +255,16 @@
     }
     
     .timer {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      /* Moved timer to bottom of payment summary */
+      position: static;
       background: rgba(255, 255, 255, 0.8);
       padding: 5px 10px;
       border-radius: 20px;
       font-size: 12px;
       display: flex;
       align-items: center;
+      margin-top: 20px;
+      width: fit-content;
     }
     
     .timer i {
@@ -357,6 +361,10 @@
     .detail-value {
       font-weight: 500;
       font-size: 14px;
+    }
+    
+    .paper-title {
+      margin-top: 5px; /* Added space between Paper Title label and value */
     }
     
     .invoice-actions {
@@ -551,10 +559,6 @@
       </div>
       
       <div class="payment-summary">
-        <div class="timer">
-          <i class="fas fa-clock"></i> Session expires in <span id="timer">14:59</span>
-        </div>
-        
         <h3 class="summary-title">Payment Summary</h3>
         
         <div class="summary-item">
@@ -581,6 +585,11 @@
             <div class="payment-icon"><i class="fas fa-university"></i></div>
             <div class="payment-icon"><i class="fas fa-wallet"></i></div>
           </div>
+        </div>
+        
+        <!-- Timer moved to bottom of payment summary -->
+        <div class="timer">
+          <i class="fas fa-clock"></i> Session expires in <span id="timer">14:59</span>
         </div>
         
         <div class="footer">
@@ -623,7 +632,7 @@
             
             <div class="detail-row">
               <span class="detail-label">Payment Method</span>
-              <span class="detail-value">Credit Card (**** 4242)</span>
+              <span class="detail-value">Debit Card (**** 1717)</span>
             </div>
             
             <div class="detail-row">
@@ -645,7 +654,7 @@
             
             <div class="detail-row">
               <span class="detail-label">Paper Title</span>
-              <span class="detail-value" id="paperTitle">Advances in AI and Cloud Computing</span>
+              <span class="detail-value paper-title" id="paperTitle">Advances in AI and Cloud Computing</span>
             </div>
           </div>
           
@@ -767,97 +776,137 @@
       }
     }
     
-    // Process payment animation
-    function processPayment() {
-      const overlay = document.getElementById('processingOverlay');
-      const progressBar = document.getElementById('progressBar');
-      const paymentContainer = document.getElementById('paymentContainer');
-      const successPage = document.getElementById('successPage');
+    // Generate PDF receipt
+    function generatePDF(userData) {
+      // Check if jsPDF is loaded
+      if (typeof window.jspdf === 'undefined') {
+        console.error('jsPDF library not loaded');
+        alert('PDF generation failed. Please try again later.');
+        return;
+      }
       
-      // Show overlay
-      overlay.style.opacity = '1';
-      overlay.style.visibility = 'visible';
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'mm', 'a4');
       
-      // Animate progress bar and steps
-      let progress = 0;
-      const progressInterval = setInterval(() => {
-        progress += 1;
-        progressBar.style.width = progress + '%';
-        
-        // Update steps based on progress
-        if (progress >= 25) {
-          document.getElementById('step1').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
-          document.getElementById('step2').className = 'step active';
-          document.getElementById('step2').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        }
-        if (progress >= 50) {
-          document.getElementById('step2').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
-          document.getElementById('step3').className = 'step active';
-          document.getElementById('step3').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        }
-        if (progress >= 75) {
-          document.getElementById('step3').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
-          document.getElementById('step4').className = 'step active';
-          document.getElementById('step4').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        }
-        if (progress >= 100) {
-          clearInterval(progressInterval);
-          document.getElementById('step4').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
-          
-          // After completion, hide overlay and show success page
-          setTimeout(() => {
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
-            paymentContainer.style.display = 'none';
-            successPage.style.display = 'block';
-            createConfetti();
-          }, 500);
-        }
-      }, 30);
-    }
-    
-    // Initialize when page loads
-    window.onload = function () {
-      const fifteenMinutes = 60 * 15;
-      const display = document.querySelector('#timer');
-      startTimer(fifteenMinutes, display);
-      
-      // Form submission
-      document.getElementById('paymentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const name = document.getElementById('name').value || 'John Doe';
-        const email = document.getElementById('email').value || 'john.doe@example.com';
-        const paperTitle = document.getElementById('paper').value || 'Advances in AI and Cloud Computing';
-        
-        // Update success page with user details
-        document.getElementById('customerName').textContent = name;
-        document.getElementById('customerEmail').textContent = email;
-        document.getElementById('paperTitle').textContent = paperTitle;
-        
-        // Generate transaction ID
-        document.getElementById('transactionId').textContent = generateTransactionId();
-        
-        // Set current date and time
-        const { date, time } = getCurrentDateTime();
-        document.getElementById('paymentDate').textContent = date;
-        document.getElementById('paymentTime').textContent = time;
-        
-        // Start payment processing
-        processPayment();
+      // Set document properties
+      doc.setProperties({
+        title: 'ICACCP 2025 Payment Receipt',
+        subject: 'Payment Receipt',
+        author: 'ICACCP 2025',
+        keywords: 'payment, receipt, conference',
+        creator: 'ICACCP Payment Portal'
       });
       
-      // Download receipt button (dummy functionality)
-      document.getElementById('downloadInvoice').addEventListener('click', function() {
-        alert('In a real implementation, this would download a PDF receipt.');
-      });
+      // Add header
+      doc.setFontSize(22);
+      doc.setTextColor(45, 63, 99); // Secondary color
+      doc.text('ICACCP 2025', 105, 20, { align: 'center' });
       
-      // Print receipt button
-      document.getElementById('printInvoice').addEventListener('click', function() {
-        window.print();
-      });
-    };
-  </script>
-</body>
-</html>
+      doc.setFontSize(18);
+      doc.text('Payment Receipt', 105, 30, { align: 'center' });
+      
+      // Add line
+      doc.setLineWidth(0.5);
+      doc.line(20, 35, 190, 35);
+      
+      // Add transaction details
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Transaction Details', 20, 45);
+      
+      doc.setFontSize(12);
+      doc.setTextColor(40, 40, 40);
+      
+      // Transaction ID
+      doc.setFont('helvetica', 'bold');
+      doc.text('Transaction ID:', 20, 55);
+      doc.setFont('helvetica', 'normal');
+      doc.text(userData.transactionId, 70, 55);
+      
+      // Payment date and time
+      doc.setFont('helvetica', 'bold');
+      doc.text('Date & Time:', 20, 65);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`${userData.date} at ${userData.time}`, 70, 65);
+      
+      // Payment method
+      doc.setFont('helvetica', 'bold');
+      doc.text('Payment Method:', 20, 75);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Debit Card (**** 1717)', 70, 75);
+      
+      // Payment status
+      doc.setFont('helvetica', 'bold');
+      doc.text('Status:', 20, 85);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Completed', 70, 85);
+      
+      // Add line
+      doc.setLineWidth(0.3);
+      doc.line(20, 95, 190, 95);
+      
+      // Customer details
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Customer Details', 20, 105);
+      
+      doc.setFontSize(12);
+      doc.setTextColor(40, 40, 40);
+      
+      // Name
+      doc.setFont('helvetica', 'bold');
+      doc.text('Name:', 20, 115);
+      doc.setFont('helvetica', 'normal');
+      doc.text(userData.name, 70, 115);
+      
+      // Email
+      doc.setFont('helvetica', 'bold');
+      doc.text('Email:', 20, 125);
+      doc.setFont('helvetica', 'normal');
+      doc.text(userData.email, 70, 125);
+      
+      // Paper title
+      doc.setFont('helvetica', 'bold');
+      doc.text('Paper Title:', 20, 135);
+      doc.setFont('helvetica', 'normal');
+      
+      // Handle long paper titles with text wrapping
+      const splitTitle = doc.splitTextToSize(userData.paperTitle, 120);
+      doc.text(splitTitle, 70, 135);
+      
+      // Add line
+      doc.setLineWidth(0.3);
+      doc.line(20, 145, 190, 145);
+      
+      // Payment details
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Payment Details', 20, 155);
+      
+      doc.setFontSize(12);
+      
+      // Conference fee
+      doc.setFont('helvetica', 'normal');
+      doc.text('Conference Registration', 20, 165);
+      doc.text('₹4,000.00', 170, 165, { align: 'right' });
+      
+      // Processing fee
+      doc.text('Processing Fee', 20, 175);
+      doc.text('₹0.00', 170, 175, { align: 'right' });
+      
+      // Line for total
+      doc.setLineWidth(0.2);
+      doc.line(20, 185, 190, 185);
+      
+      // Total
+      doc.setFont('helvetica', 'bold');
+      doc.text('Total Amount', 20, 195);
+      doc.text('₹4,000.00', 170, 195, { align: 'right' });
+      
+      // Footer
+      doc.setFontSize(10);
+      doc.setTextColor(108, 117, 125); // Gray color
+      doc.text('Thank you for registering for ICACCP 2025!', 105, 220, { align: 'center' });
+      doc.text('© 2025 ICACCP Conference Committee. All rights reserved.', 105, 226, { align: 'center' });
+      
+     
