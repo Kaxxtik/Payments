@@ -19,26 +19,26 @@
       --gray: #6c757d;
       --light-gray: #e9ecef;
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f7fafc;
       color: #333;
       line-height: 1.6;
     }
-    
+
     .main-container {
       display: flex;
       min-height: 100vh;
       padding: 20px;
     }
-    
+
     .payment-container {
       max-width: 1000px;
       margin: auto;
@@ -47,30 +47,30 @@
       border-radius: 16px;
       overflow: hidden;
     }
-    
+
     .payment-details {
       background: white;
       padding: 40px;
       width: 60%;
     }
-    
+
     .payment-summary {
       background: var(--light-gray);
       padding: 40px;
       width: 40%;
       position: relative;
     }
-    
+
     .header {
       margin-bottom: 30px;
     }
-    
+
     .logo {
       display: flex;
       align-items: center;
       margin-bottom: 30px;
     }
-    
+
     .logo img {
       width: 80px;
       height: 80px;
@@ -78,30 +78,30 @@
       border-radius: 50%; /* Make logo round */
       object-fit: cover;
     }
-    
+
     .logo-text {
       font-size: 20px;
       font-weight: 600;
       color: var(--secondary);
     }
-    
+
     h2 {
       font-size: 24px;
       font-weight: 600;
       color: var(--secondary);
       margin-bottom: 5px;
     }
-    
+
     .subtitle {
       color: var(--gray);
       font-size: 14px;
       margin-bottom: 30px;
     }
-    
+
     .form-group {
       margin-bottom: 20px;
     }
-    
+
     label {
       display: block;
       margin-bottom: 8px;
@@ -109,7 +109,7 @@
       font-size: 14px;
       color: var(--secondary);
     }
-    
+
     input {
       width: 100%;
       padding: 12px 15px;
@@ -118,34 +118,34 @@
       font-size: 15px;
       transition: all 0.3s;
     }
-    
+
     input:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(84, 105, 212, 0.2);
     }
-    
+
     input:disabled {
       background-color: #f8f9fa;
       color: #495057;
     }
-    
+
     .amount-input {
       position: relative;
     }
-    
+
     .amount-input input {
       padding-left: 30px;
       font-weight: bold;
     }
-    
+
     .currency-symbol {
       position: absolute;
       left: 15px;
       top: 13px;
       color: var(--gray);
     }
-    
+
     .button {
       width: 100%;
       padding: 14px;
@@ -156,38 +156,38 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-    
+
     .button-primary {
       background-color: var(--primary);
       color: white;
     }
-    
+
     .button-primary:hover {
       background-color: var(--primary-light);
       transform: translateY(-2px);
     }
-    
+
     .summary-title {
       font-weight: 600;
       margin-bottom: 20px;
       color: var(--secondary);
     }
-    
+
     .summary-item {
       display: flex;
       justify-content: space-between;
       margin-bottom: 15px;
       font-size: 14px;
     }
-    
+
     .summary-label {
       color: var(--gray);
     }
-    
+
     .summary-value {
       font-weight: 500;
     }
-    
+
     .summary-total {
       margin-top: 20px;
       padding-top: 20px;
@@ -197,22 +197,22 @@
       font-weight: 600;
       font-size: 16px;
     }
-    
+
     .payment-methods {
       margin-top: 30px;
     }
-    
+
     .payment-method-title {
       font-size: 14px;
       color: var(--gray);
       margin-bottom: 15px;
     }
-    
+
     .payment-icons {
       display: flex;
       gap: 15px;
     }
-    
+
     .payment-icon {
       width: 40px;
       height: 25px;
@@ -223,7 +223,7 @@
       align-items: center;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-    
+
     .secure-badge {
       display: flex;
       align-items: center;
@@ -231,53 +231,51 @@
       color: var(--gray);
       margin-top: 20px;
     }
-    
+
     .secure-badge i {
       margin-right: 5px;
       color: var(--success);
     }
-    
+
     .footer {
       text-align: center;
       font-size: 12px;
       color: var(--gray);
       margin-top: 30px;
     }
-    
+
     /* Animation effects */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .payment-container {
       animation: fadeIn 0.5s ease-out;
     }
-    
+
     .timer {
-      /* Moved timer to bottom of payment summary */
-      position: static;
+      margin-top: 20px;
       background: rgba(255, 255, 255, 0.8);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
       display: flex;
       align-items: center;
-      margin-top: 20px;
       width: fit-content;
     }
-    
+
     .timer i {
       margin-right: 5px;
       color: var(--danger);
     }
-    
+
     /* Success Page Styles */
     .success-page {
-      display: none;
+      display: none; /* Hidden initially */
       animation: fadeIn 0.6s ease-out;
     }
-    
+
     .success-container {
       max-width: 1000px;
       margin: auto;
@@ -286,26 +284,26 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       overflow: hidden;
     }
-    
+
     .success-header {
       background-color: var(--success);
       padding: 40px;
       text-align: center;
       color: white;
     }
-    
+
     .success-icon {
       font-size: 60px;
       margin-bottom: 20px;
       animation: scaleIn 0.5s ease-out;
     }
-    
+
     @keyframes scaleIn {
       0% { transform: scale(0); opacity: 0; }
       50% { transform: scale(1.2); opacity: 1; }
       100% { transform: scale(1); opacity: 1; }
     }
-    
+
     .confetti {
       position: absolute;
       width: 10px;
@@ -313,23 +311,23 @@
       animation: confetti 5s ease-in-out infinite;
       opacity: 0;
     }
-    
+
     @keyframes confetti {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
-    
+
     .success-body {
       padding: 40px;
     }
-    
+
     .transaction-details {
       background-color: var(--light);
       border-radius: 12px;
       padding: 20px;
       margin: 20px 0;
     }
-    
+
     .transaction-id {
       font-family: monospace;
       font-size: 20px;
@@ -341,52 +339,56 @@
       margin: 15px 0;
       text-align: center;
     }
-    
+
     .detail-row {
       display: flex;
       justify-content: space-between;
       padding: 12px 0;
       border-bottom: 1px dashed #e0e0e0;
     }
-    
+
     .detail-row:last-child {
       border-bottom: none;
     }
-    
+
     .detail-label {
       color: var(--gray);
       font-size: 14px;
     }
-    
+
     .detail-value {
       font-weight: 500;
       font-size: 14px;
     }
-    
+
     .paper-title {
-      margin-top: 5px; /* Added space between Paper Title label and value */
+      margin-top: 8px; /* Adds space above the title if needed */
+      font-style: italic;
+      color: var(--secondary);
+      /* Consider adding padding-left here if more space is desired */
+      /* padding-left: 5px; */
     }
-    
+
     .invoice-actions {
       display: flex;
       gap: 15px;
       margin-top: 30px;
     }
-    
+
     .button-outline {
       background-color: transparent;
       border: 1px solid var(--primary);
       color: var(--primary);
     }
-    
+
     .button-outline:hover {
       background-color: rgba(84, 105, 212, 0.1);
     }
-    
+
     .download-icon, .print-icon {
       margin-right: 8px;
     }
-    
+
     /* Processing overlay */
     .processing-overlay {
       position: fixed;
@@ -403,7 +405,7 @@
       visibility: hidden;
       transition: opacity 0.3s, visibility 0.3s;
     }
-    
+
     .processing-content {
       background-color: white;
       border-radius: 12px;
@@ -413,30 +415,30 @@
       max-width: 400px;
       width: 90%;
     }
-    
+
     .processing-spinner {
       margin-bottom: 20px;
       color: var(--primary);
       font-size: 40px;
       animation: spin 1s linear infinite;
     }
-    
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    
+
     .processing-text {
       font-size: 18px;
       font-weight: 500;
       margin-bottom: 5px;
     }
-    
+
     .processing-subtext {
       color: var(--gray);
       font-size: 14px;
     }
-    
+
     .processing-progress {
       height: 6px;
       background-color: #e9ecef;
@@ -444,7 +446,7 @@
       margin: 20px 0;
       overflow: hidden;
     }
-    
+
     .progress-bar {
       height: 100%;
       width: 0%;
@@ -452,12 +454,12 @@
       border-radius: 3px;
       transition: width 0.3s ease;
     }
-    
+
     .processing-steps {
       text-align: left;
       margin-top: 20px;
     }
-    
+
     .step {
       display: flex;
       align-items: center;
@@ -465,54 +467,109 @@
       font-size: 14px;
       opacity: 0.5;
     }
-    
+
     .step.active {
       opacity: 1;
     }
-    
+
     .step-icon {
       margin-right: 10px;
       width: 20px;
       text-align: center;
     }
-    
+
     .step-success {
       color: var(--success);
     }
-    
+
     /* Responsive styles */
     @media (max-width: 768px) {
       .payment-container, .success-container {
         flex-direction: column;
       }
-      
+
       .payment-details,
       .payment-summary {
         width: 100%;
         padding: 30px;
       }
-      
+
       .payment-summary {
-        order: -1;
+        order: -1; /* Show summary first on small screens */
       }
-      
+
       .invoice-actions {
         flex-direction: column;
       }
-      
+
       .success-header {
         padding: 30px;
       }
-      
+
       .success-body {
         padding: 30px;
       }
     }
+
+    /* Print specific styles */
+    @media print {
+      body {
+        background-color: white; /* Ensure white background for printing */
+      }
+      .main-container {
+        padding: 0;
+      }
+      .payment-container, .processing-overlay {
+        display: none; /* Hide payment form and overlay when printing */
+      }
+      .success-page {
+        display: block !important; /* Ensure success page is visible */
+        animation: none; /* Disable animation for printing */
+      }
+      .success-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        border: 1px solid #ccc; /* Add a border for clarity */
+      }
+      .success-header {
+        background-color: var(--success) !important; /* Ensure background color prints */
+        color: white !important; /* Ensure text color prints */
+        -webkit-print-color-adjust: exact; /* Force background graphics printing in Chrome/Safari */
+        print-color-adjust: exact; /* Standard */
+      }
+      .success-body {
+        padding: 20px;
+      }
+      .transaction-details {
+        background-color: var(--light) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .transaction-id {
+         background-color: #f0f4f8 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .detail-row {
+        border-bottom: 1px dashed #ccc;
+        padding: 10px 0;
+      }
+      .invoice-actions {
+        display: none; /* Hide buttons when printing */
+      }
+      .confetti {
+        display: none; /* Hide confetti when printing */
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="main-container">
-    <!-- Payment Form Container -->
     <div class="payment-container" id="paymentContainer">
       <div class="payment-details">
         <div class="header">
@@ -523,23 +580,23 @@
           <h2>Complete Your Payment</h2>
           <p class="subtitle">Please fill in your details to proceed with the payment</p>
         </div>
-        
+
         <form id="paymentForm">
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" placeholder="Enter your full name" required />
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" placeholder="Enter your email address" required />
           </div>
-          
+
           <div class="form-group">
             <label for="paper">Paper Title</label>
             <input type="text" id="paper" placeholder="Enter your paper title" required />
           </div>
-          
+
           <div class="form-group">
             <label for="amount">Amount</label>
             <div class="amount-input">
@@ -547,35 +604,35 @@
               <input type="text" id="amount" value="4,000.00" disabled />
             </div>
           </div>
-          
+
           <button type="submit" id="payButton" class="button button-primary">
             Proceed to Payment <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
           </button>
-          
+
           <div class="secure-badge">
             <i class="fas fa-lock"></i> Your payment information is secure
           </div>
         </form>
       </div>
-      
+
       <div class="payment-summary">
         <h3 class="summary-title">Payment Summary</h3>
-        
+
         <div class="summary-item">
           <span class="summary-label">Conference Registration</span>
           <span class="summary-value">₹4,000.00</span>
         </div>
-        
+
         <div class="summary-item">
           <span class="summary-label">Processing Fee</span>
           <span class="summary-value">₹0.00</span>
         </div>
-        
+
         <div class="summary-total">
           <span>Total Amount</span>
           <span>₹4,000.00</span>
         </div>
-        
+
         <div class="payment-methods">
           <div class="payment-method-title">Accepted Payment Methods</div>
           <div class="payment-icons">
@@ -586,19 +643,17 @@
             <div class="payment-icon"><i class="fas fa-wallet"></i></div>
           </div>
         </div>
-        
-        <!-- Timer moved to bottom of payment summary -->
+
         <div class="timer">
           <i class="fas fa-clock"></i> Session expires in <span id="timer">14:59</span>
         </div>
-        
+
         <div class="footer">
           © 2025 ICACCP Conference Committee. All rights reserved.
         </div>
       </div>
     </div>
-    
-    <!-- Success Page Container -->
+
     <div class="success-page" id="successPage">
       <div class="success-container">
         <div class="success-header">
@@ -608,58 +663,51 @@
           <h2>Payment Successful!</h2>
           <p>Your registration for ICACCP 2025 is confirmed</p>
         </div>
-        
+
         <div class="success-body">
           <h3>Transaction Details</h3>
-          
+
           <div class="transaction-details">
-            <div class="transaction-id" id="transactionId">ICACP25XR87Z94Y6P</div>
-            
-            <div class="detail-row">
+            <div class="transaction-id" id="transactionId">ICACP25XXXXXXXX</div> <div class="detail-row">
               <span class="detail-label">Amount Paid</span>
               <span class="detail-value">₹4,000.00</span>
             </div>
-            
+
             <div class="detail-row">
               <span class="detail-label">Payment Date</span>
-              <span class="detail-value" id="paymentDate">April 5, 2025</span>
-            </div>
-            
+              <span class="detail-value" id="paymentDate"></span> </div>
+
             <div class="detail-row">
               <span class="detail-label">Payment Time</span>
-              <span class="detail-value" id="paymentTime">15:42:30 IST</span>
-            </div>
-            
+              <span class="detail-value" id="paymentTime"></span> </div>
+
             <div class="detail-row">
               <span class="detail-label">Payment Method</span>
-              <span class="detail-value">Debit Card (**** 1717)</span>
-            </div>
-            
+              <span class="detail-value">Debit Card (**** 1717)</span> </div>
+
             <div class="detail-row">
               <span class="detail-label">Payment Status</span>
               <span class="detail-value" style="color: var(--success);">
                 <i class="fas fa-check-circle"></i> Completed
               </span>
             </div>
-            
+
             <div class="detail-row">
               <span class="detail-label">Registrant Name</span>
-              <span class="detail-value" id="customerName">John Doe</span>
-            </div>
-            
+              <span class="detail-value" id="customerName"></span> </div>
+
             <div class="detail-row">
               <span class="detail-label">Email Address</span>
-              <span class="detail-value" id="customerEmail">john.doe@example.com</span>
-            </div>
-            
+              <span class="detail-value" id="customerEmail"></span> </div>
+
             <div class="detail-row">
               <span class="detail-label">Paper Title</span>
-              <span class="detail-value paper-title" id="paperTitle">Advances in AI and Cloud Computing</span>
+              <div> <span class="detail-value paper-title" id="paperTitle"></span> </div>
             </div>
           </div>
-          
+
           <p>A confirmation email has been sent to your registered email address with all the details.</p>
-          
+
           <div class="invoice-actions">
             <button class="button button-primary" id="downloadInvoice">
               <i class="fas fa-download download-icon"></i> Download Receipt
@@ -672,8 +720,7 @@
       </div>
     </div>
   </div>
-  
-  <!-- Processing Payment Overlay -->
+
   <div class="processing-overlay" id="processingOverlay">
     <div class="processing-content">
       <div class="processing-spinner">
@@ -681,11 +728,11 @@
       </div>
       <h3 class="processing-text">Processing Payment</h3>
       <p class="processing-subtext">Please do not close this window</p>
-      
+
       <div class="processing-progress">
         <div class="progress-bar" id="progressBar"></div>
       </div>
-      
+
       <div class="processing-steps">
         <div class="step active" id="step1">
           <span class="step-icon"><i class="fas fa-spinner fa-spin"></i></span>
@@ -706,28 +753,35 @@
       </div>
     </div>
   </div>
-  
+
   <script>
+    // Load jsPDF safely
+    const jsPDF = window.jspdf?.jsPDF; // Use optional chaining in case library fails to load
+
     // Timer functionality
     function startTimer(duration, display) {
       let timer = duration, minutes, seconds;
       const interval = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
-        
+
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
-        
+
         display.textContent = minutes + ":" + seconds;
-        
+
         if (--timer < 0) {
           clearInterval(interval);
           display.textContent = "Expired";
-          alert("Your payment session has expired. Please refresh the page to continue.");
+          // Optionally disable the pay button or show a message
+          document.getElementById('payButton').disabled = true;
+          document.getElementById('payButton').textContent = 'Session Expired';
+          alert("Your payment session has expired. Please refresh the page to start again.");
         }
       }, 1000);
+      return interval; // Return interval ID to allow clearing if needed
     }
-    
+
     // Generate a random transaction ID
     function generateTransactionId() {
       const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -737,176 +791,354 @@
       }
       return result;
     }
-    
-    // Format current date and time
+
+    // Format current date and time for India (IST)
     function getCurrentDateTime() {
       const now = new Date();
-      
-      // Format date
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const formattedDate = now.toLocaleDateString('en-US', options);
-      
-      // Format time
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const formattedTime = `${hours}:${minutes}:${seconds} IST`;
-      
+
+      // Format date (e.g., April 5, 2025)
+      const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
+      const formattedDate = now.toLocaleDateString('en-IN', dateOptions);
+
+      // Format time (e.g., 23:14:31 IST)
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Kolkata', timeZoneName: 'short' };
+      // A slight workaround to ensure 'IST' is shown reliably
+      let formattedTime = now.toLocaleTimeString('en-IN', timeOptions);
+      if (!formattedTime.includes('IST')) {
+           formattedTime = formattedTime.replace(/ GMT\+5:30| \+0530/, ' IST'); // Attempt to replace timezone offset if IST isn't included by default
+      }
+
+
       return { date: formattedDate, time: formattedTime };
     }
-    
+
     // Create confetti effect
     function createConfetti() {
+      const confettiContainer = document.body; // Append to body
       const colors = ['#5469d4', '#0ead69', '#ffb703', '#e63946', '#2d3f63'];
       const confettiCount = 100;
-      
+
       for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDelay = Math.random() * 5 + 's';
-        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(confetti);
-        
-        // Remove confetti after animation
+        confetti.style.left = Math.random() * 100 + 'vw'; // Spread across viewport width
+        confetti.style.top = '-10px'; // Start just above the viewport
+        confetti.style.position = 'fixed'; // Use fixed positioning
+        confetti.style.zIndex = '10000'; // Ensure confetti is on top
+        confetti.style.opacity = '0'; // Start invisible for animation
+
+        // Randomize animation properties
+        const duration = Math.random() * 3 + 4; // Duration 4-7 seconds
+        const delay = Math.random() * 2; // Delay 0-2 seconds
+
+        confetti.style.animation = `confetti ${duration}s ${delay}s ease-out forwards`; // Use 'forwards' to keep final state
+
+        confettiContainer.appendChild(confetti);
+
+        // Remove confetti element after animation + a buffer
         setTimeout(() => {
           confetti.remove();
-        }, 5000);
+        }, (duration + delay + 1) * 1000);
       }
     }
-    
+
+
     // Generate PDF receipt
-    function generatePDF(userData) {
-      // Check if jsPDF is loaded
-      if (typeof window.jspdf === 'undefined') {
-        console.error('jsPDF library not loaded');
-        alert('PDF generation failed. Please try again later.');
-        return;
+    function generatePDF(name, email, paperTitle, transactionId, date, time) {
+       if (!jsPDF) {
+            alert('Error: PDF generation library failed to load.');
+            return;
+        }
+      try {
+        // Create new PDF document
+        const doc = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
+        });
+
+        // Define colors
+        const primaryColor = '#2d3f63'; // var(--secondary)
+        const grayColor = '#6c757d'; // var(--gray)
+        const lightGrayColor = '#cccccc';
+
+        // Add content to PDF
+        doc.setFontSize(20);
+        doc.setTextColor(primaryColor);
+        doc.text('ICACCP 2025 Payment Receipt', 105, 20, { align: 'center' });
+
+        doc.setFontSize(12);
+        doc.setTextColor(grayColor);
+        doc.text('Transaction Details', 20, 40);
+
+        doc.setDrawColor(lightGrayColor);
+        doc.line(20, 45, 190, 45); // Line separator
+
+        doc.setFontSize(14);
+        doc.setTextColor(primaryColor);
+        doc.text(`Transaction ID: ${transactionId}`, 20, 55);
+
+        doc.setFontSize(12);
+        doc.setTextColor(grayColor); // Label color
+
+        // Define details in a structured way for easy layout
+        const details = [
+          { label: 'Payment Date:', value: date, xValueOffset: 100 },
+          { label: 'Payment Time:', value: time, xValueOffset: 100 },
+          { label: 'Amount Paid:', value: '₹4,000.00', xValueOffset: 100 },
+          { label: 'Payment Method:', value: 'Debit Card (**** 1717)', xValueOffset: 100 },
+          { label: 'Payment Status:', value: 'Completed', xValueOffset: 100 },
+          { label: 'Registrant Name:', value: name, xValueOffset: 0 }, // Full width
+          { label: 'Email Address:', value: email, xValueOffset: 0 }, // Full width
+          { label: 'Paper Title:', value: paperTitle, xValueOffset: 0, isPaperTitle: true } // Special handling for paper title
+        ];
+
+        let yPos = 65;
+        const labelX = 20;
+        const valueX = 70; // Starting X for single-column values
+        const secondColX = 120; // Starting X for second column values
+
+        details.forEach(item => {
+          doc.setTextColor(grayColor);
+          doc.text(item.label, labelX, yPos);
+
+          doc.setTextColor(primaryColor); // Value color
+          if (item.xValueOffset === 0) {
+             // Handle potentially long values like name, email, title
+            const splitTitle = doc.splitTextToSize(item.value, 190 - valueX); // Max width available
+            doc.text(splitTitle, valueX, yPos);
+            // Adjust yPos based on number of lines for long values
+            yPos += (splitTitle.length > 1 ? (splitTitle.length * 5) : 10); // Add more space for multi-line values
+          } else {
+            doc.text(item.value, secondColX, yPos - 10); // Print value on the same line if second column
+             yPos += 10; // Move to next line
+          }
+        });
+
+        // Footer section
+        doc.setDrawColor(lightGrayColor);
+        doc.line(20, yPos + 5, 190, yPos + 5);
+
+        doc.setFontSize(10);
+        doc.setTextColor(grayColor);
+        const footerText1 = 'Thank you for registering for ICACCP 2025. A confirmation email has been sent to your registered email address.';
+        const splitFooterText1 = doc.splitTextToSize(footerText1, 170); // Wrap text
+        doc.text(splitFooterText1, 105, yPos + 15, { align: 'center' });
+
+        yPos += (splitFooterText1.length * 4) + 10; // Adjust yPos after wrapped text
+
+        doc.text('© 2025 ICACCP Conference Committee. All rights reserved.', 105, yPos , { align: 'center' });
+
+        // Save PDF
+        doc.save(`ICACCP_2025_Receipt_${transactionId}.pdf`);
+      } catch (error) {
+          console.error("Error generating PDF:", error);
+          alert("Sorry, there was an error generating the PDF receipt.");
       }
-      
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF('p', 'mm', 'a4');
-      
-      // Set document properties
-      doc.setProperties({
-        title: 'ICACCP 2025 Payment Receipt',
-        subject: 'Payment Receipt',
-        author: 'ICACCP 2025',
-        keywords: 'payment, receipt, conference',
-        creator: 'ICACCP Payment Portal'
+    }
+
+    // Process payment animation
+    function processPayment() {
+      const overlay = document.getElementById('processingOverlay');
+      const progressBar = document.getElementById('progressBar');
+      const paymentContainer = document.getElementById('paymentContainer');
+      const successPage = document.getElementById('successPage');
+      const steps = [
+          document.getElementById('step1'),
+          document.getElementById('step2'),
+          document.getElementById('step3'),
+          document.getElementById('step4')
+      ];
+
+      // Reset steps visually before starting
+      steps.forEach((step, index) => {
+          step.className = index === 0 ? 'step active' : 'step';
+          step.querySelector('.step-icon').innerHTML = index === 0 ? '<i class="fas fa-spinner fa-spin"></i>' : '<i class="fas fa-spinner"></i>';
       });
-      
-      // Add header
-      doc.setFontSize(22);
-      doc.setTextColor(45, 63, 99); // Secondary color
-      doc.text('ICACCP 2025', 105, 20, { align: 'center' });
-      
-      doc.setFontSize(18);
-      doc.text('Payment Receipt', 105, 30, { align: 'center' });
-      
-      // Add line
-      doc.setLineWidth(0.5);
-      doc.line(20, 35, 190, 35);
-      
-      // Add transaction details
-      doc.setFontSize(14);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Transaction Details', 20, 45);
-      
-      doc.setFontSize(12);
-      doc.setTextColor(40, 40, 40);
-      
-      // Transaction ID
-      doc.setFont('helvetica', 'bold');
-      doc.text('Transaction ID:', 20, 55);
-      doc.setFont('helvetica', 'normal');
-      doc.text(userData.transactionId, 70, 55);
-      
-      // Payment date and time
-      doc.setFont('helvetica', 'bold');
-      doc.text('Date & Time:', 20, 65);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`${userData.date} at ${userData.time}`, 70, 65);
-      
-      // Payment method
-      doc.setFont('helvetica', 'bold');
-      doc.text('Payment Method:', 20, 75);
-      doc.setFont('helvetica', 'normal');
-      doc.text('Debit Card (**** 1717)', 70, 75);
-      
-      // Payment status
-      doc.setFont('helvetica', 'bold');
-      doc.text('Status:', 20, 85);
-      doc.setFont('helvetica', 'normal');
-      doc.text('Completed', 70, 85);
-      
-      // Add line
-      doc.setLineWidth(0.3);
-      doc.line(20, 95, 190, 95);
-      
-      // Customer details
-      doc.setFontSize(14);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Customer Details', 20, 105);
-      
-      doc.setFontSize(12);
-      doc.setTextColor(40, 40, 40);
-      
-      // Name
-      doc.setFont('helvetica', 'bold');
-      doc.text('Name:', 20, 115);
-      doc.setFont('helvetica', 'normal');
-      doc.text(userData.name, 70, 115);
-      
-      // Email
-      doc.setFont('helvetica', 'bold');
-      doc.text('Email:', 20, 125);
-      doc.setFont('helvetica', 'normal');
-      doc.text(userData.email, 70, 125);
-      
-      // Paper title
-      doc.setFont('helvetica', 'bold');
-      doc.text('Paper Title:', 20, 135);
-      doc.setFont('helvetica', 'normal');
-      
-      // Handle long paper titles with text wrapping
-      const splitTitle = doc.splitTextToSize(userData.paperTitle, 120);
-      doc.text(splitTitle, 70, 135);
-      
-      // Add line
-      doc.setLineWidth(0.3);
-      doc.line(20, 145, 190, 145);
-      
-      // Payment details
-      doc.setFontSize(14);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Payment Details', 20, 155);
-      
-      doc.setFontSize(12);
-      
-      // Conference fee
-      doc.setFont('helvetica', 'normal');
-      doc.text('Conference Registration', 20, 165);
-      doc.text('₹4,000.00', 170, 165, { align: 'right' });
-      
-      // Processing fee
-      doc.text('Processing Fee', 20, 175);
-      doc.text('₹0.00', 170, 175, { align: 'right' });
-      
-      // Line for total
-      doc.setLineWidth(0.2);
-      doc.line(20, 185, 190, 185);
-      
-      // Total
-      doc.setFont('helvetica', 'bold');
-      doc.text('Total Amount', 20, 195);
-      doc.text('₹4,000.00', 170, 195, { align: 'right' });
-      
-      // Footer
-      doc.setFontSize(10);
-      doc.setTextColor(108, 117, 125); // Gray color
-      doc.text('Thank you for registering for ICACCP 2025!', 105, 220, { align: 'center' });
-      doc.text('© 2025 ICACCP Conference Committee. All rights reserved.', 105, 226, { align: 'center' });
-      
-     
+       progressBar.style.width = '0%';
+
+
+      // Show overlay
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+
+      // Animate progress bar and steps
+      let progress = 0;
+      const stepThresholds = [25, 50, 75, 100];
+      const totalDuration = 3000; // 3 seconds total processing time
+      const intervalTime = 30; // Update every 30ms
+      const progressIncrement = (100 / (totalDuration / intervalTime));
+
+      const progressInterval = setInterval(() => {
+        progress += progressIncrement;
+        if (progress > 100) progress = 100;
+        progressBar.style.width = progress + '%';
+
+        // Update steps based on progress thresholds
+        stepThresholds.forEach((threshold, index) => {
+            if (progress >= threshold && index < steps.length) {
+                 // Mark previous step as complete if not the first step
+                 if (index > 0) {
+                     steps[index - 1].querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+                 }
+                 // Activate current step and show spinner
+                 if (index < steps.length ) { // Ensure index is within bounds
+                    steps[index].className = 'step active';
+                    if (progress < 100) { // Don't show spinner for the last step if already 100%
+                       steps[index].querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    } else {
+                         steps[index].querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+                    }
+                 }
+            }
+        });
+
+
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+          // Ensure the last step icon shows success check
+          steps[steps.length - 1].querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+
+          // After completion, hide overlay and show success page
+          setTimeout(() => {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            paymentContainer.style.display = 'none'; // Hide form
+            successPage.style.display = 'block'; // Show success page
+            successPage.scrollIntoView({ behavior: 'smooth' }); // Scroll to success page
+            createConfetti();
+          }, 500); // Wait half a second after 100%
+        }
+      }, intervalTime);
+    }
+
+    // Initialize when page loads
+    window.onload = function () {
+      // Check if jsPDF loaded
+       if (!jsPDF) {
+            console.error('jsPDF library failed to load.');
+            // Maybe disable PDF download button or show a warning
+            const downloadBtn = document.getElementById('downloadInvoice');
+            if(downloadBtn) {
+                downloadBtn.disabled = true;
+                downloadBtn.title = "PDF library failed to load";
+                downloadBtn.style.opacity = '0.6';
+                downloadBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+      const timerDuration = 60 * 15; // 15 minutes
+      const timerDisplay = document.querySelector('#timer');
+      let timerIntervalId = null; // Store timer interval ID
+
+       if (timerDisplay) {
+         timerIntervalId = startTimer(timerDuration, timerDisplay);
+       } else {
+           console.error("Timer display element not found");
+       }
+
+
+      // Form submission handler
+      const paymentForm = document.getElementById('paymentForm');
+      if (paymentForm) {
+          paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+
+             // Clear the session timer once submitted
+             if (timerIntervalId) {
+                clearInterval(timerIntervalId);
+             }
+             // Optionally update timer display
+             if (timerDisplay) timerDisplay.textContent = "Processing...";
+
+
+            // Get form data (with defaults for safety)
+            const name = document.getElementById('name')?.value || 'N/A';
+            const email = document.getElementById('email')?.value || 'N/A';
+            const paperTitle = document.getElementById('paper')?.value || 'N/A';
+
+            // --- Update success page elements ---
+             // Check if elements exist before trying to set text content
+            const customerNameEl = document.getElementById('customerName');
+            const customerEmailEl = document.getElementById('customerEmail');
+            const paperTitleEl = document.getElementById('paperTitle');
+            const paymentDateEl = document.getElementById('paymentDate');
+            const paymentTimeEl = document.getElementById('paymentTime');
+            const transactionIdEl = document.getElementById('transactionId');
+
+            if (customerNameEl) customerNameEl.textContent = name;
+            if (customerEmailEl) customerEmailEl.textContent = email;
+            // Add a little space before setting the paper title text for visual separation
+            if (paperTitleEl) paperTitleEl.textContent = ' ' + paperTitle;
+
+            // Get current date and time
+            const { date, time } = getCurrentDateTime();
+            if (paymentDateEl) paymentDateEl.textContent = date;
+            if (paymentTimeEl) paymentTimeEl.textContent = time;
+
+            // Generate and display transaction ID
+            const transactionId = generateTransactionId();
+            if (transactionIdEl) transactionIdEl.textContent = transactionId;
+
+            // Store details for PDF generation - associating with the success page element
+            const successPageElement = document.getElementById('successPage');
+             if (successPageElement) {
+                successPageElement.dataset.name = name;
+                successPageElement.dataset.email = email;
+                successPageElement.dataset.paperTitle = paperTitle;
+                successPageElement.dataset.transactionId = transactionId;
+                successPageElement.dataset.date = date;
+                successPageElement.dataset.time = time;
+             } else {
+                 console.error("Success page element not found for storing data.");
+             }
+
+            // Simulate payment processing visually
+            processPayment();
+          });
+      } else {
+          console.error("Payment form element not found.");
+      }
+
+
+      // --- Event listeners for Success Page Buttons ---
+      const downloadBtn = document.getElementById('downloadInvoice');
+      const printBtn = document.getElementById('printInvoice');
+
+      if (downloadBtn) {
+          downloadBtn.addEventListener('click', function() {
+            const successPageElement = document.getElementById('successPage');
+            if (successPageElement && successPageElement.dataset.transactionId) { // Check if data exists
+                const name = successPageElement.dataset.name;
+                const email = successPageElement.dataset.email;
+                const paperTitle = successPageElement.dataset.paperTitle;
+                const transactionId = successPageElement.dataset.transactionId;
+                const date = successPageElement.dataset.date;
+                const time = successPageElement.dataset.time;
+
+                // Call the generatePDF function with the stored details
+                generatePDF(name, email, paperTitle, transactionId, date, time);
+            } else {
+                 alert("Could not retrieve transaction details to generate receipt.");
+                 console.error("Missing data on success page element for PDF generation.");
+            }
+          });
+      } else {
+           console.error("Download Invoice button not found.");
+      }
+
+
+      if (printBtn) {
+          printBtn.addEventListener('click', function() {
+            // Use the browser's print functionality
+            window.print();
+          });
+      } else {
+           console.error("Print Invoice button not found.");
+      }
+
+    }; // End window.onload
+  </script>
+</body>
+</html>
