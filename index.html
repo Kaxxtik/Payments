@@ -268,9 +268,213 @@
       color: var(--danger);
     }
     
+    /* Success Page Styles */
+    .success-page {
+      display: none;
+      animation: fadeIn 0.6s ease-out;
+    }
+    
+    .success-container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    
+    .success-header {
+      background-color: var(--success);
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+    
+    .success-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: scaleIn 0.5s ease-out;
+    }
+    
+    @keyframes scaleIn {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: confetti 5s ease-in-out infinite;
+      opacity: 0;
+    }
+    
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+    
+    .success-body {
+      padding: 40px;
+    }
+    
+    .transaction-details {
+      background-color: var(--light);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .transaction-id {
+      font-family: monospace;
+      font-size: 20px;
+      color: var(--secondary);
+      letter-spacing: 1px;
+      padding: 10px;
+      background-color: #f0f4f8;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: center;
+    }
+    
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+    
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+    
+    .detail-label {
+      color: var(--gray);
+      font-size: 14px;
+    }
+    
+    .detail-value {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    
+    .invoice-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .button-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .button-outline:hover {
+      background-color: rgba(84, 105, 212, 0.1);
+    }
+    
+    .download-icon, .print-icon {
+      margin-right: 8px;
+    }
+    
+    /* Processing overlay */
+    .processing-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .processing-content {
+      background-color: white;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+    
+    .processing-spinner {
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 40px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .processing-text {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .processing-subtext {
+      color: var(--gray);
+      font-size: 14px;
+    }
+    
+    .processing-progress {
+      height: 6px;
+      background-color: #e9ecef;
+      border-radius: 3px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--primary);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    
+    .processing-steps {
+      text-align: left;
+      margin-top: 20px;
+    }
+    
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+      opacity: 0.5;
+    }
+    
+    .step.active {
+      opacity: 1;
+    }
+    
+    .step-icon {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .step-success {
+      color: var(--success);
+    }
+    
     /* Responsive styles */
     @media (max-width: 768px) {
-      .payment-container {
+      .payment-container, .success-container {
         flex-direction: column;
       }
       
@@ -283,12 +487,25 @@
       .payment-summary {
         order: -1;
       }
+      
+      .invoice-actions {
+        flex-direction: column;
+      }
+      
+      .success-header {
+        padding: 30px;
+      }
+      
+      .success-body {
+        padding: 30px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="main-container">
-    <div class="payment-container">
+    <!-- Payment Form Container -->
+    <div class="payment-container" id="paymentContainer">
       <div class="payment-details">
         <div class="header">
           <div class="logo">
@@ -371,6 +588,114 @@
         </div>
       </div>
     </div>
+    
+    <!-- Success Page Container -->
+    <div class="success-page" id="successPage">
+      <div class="success-container">
+        <div class="success-header">
+          <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Payment Successful!</h2>
+          <p>Your registration for ICACCP 2025 is confirmed</p>
+        </div>
+        
+        <div class="success-body">
+          <h3>Transaction Details</h3>
+          
+          <div class="transaction-details">
+            <div class="transaction-id" id="transactionId">ICACP25XR87Z94Y6P</div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Amount Paid</span>
+              <span class="detail-value">₹4,000.00</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Payment Date</span>
+              <span class="detail-value" id="paymentDate">April 5, 2025</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Payment Time</span>
+              <span class="detail-value" id="paymentTime">15:42:30 IST</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Payment Method</span>
+              <span class="detail-value">Credit Card (**** 4242)</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Payment Status</span>
+              <span class="detail-value" style="color: var(--success);">
+                <i class="fas fa-check-circle"></i> Completed
+              </span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Registrant Name</span>
+              <span class="detail-value" id="customerName">John Doe</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Email Address</span>
+              <span class="detail-value" id="customerEmail">john.doe@example.com</span>
+            </div>
+            
+            <div class="detail-row">
+              <span class="detail-label">Paper Title</span>
+              <span class="detail-value" id="paperTitle">Advances in AI and Cloud Computing</span>
+            </div>
+          </div>
+          
+          <p>A confirmation email has been sent to your registered email address with all the details.</p>
+          
+          <div class="invoice-actions">
+            <button class="button button-primary" id="downloadInvoice">
+              <i class="fas fa-download download-icon"></i> Download Receipt
+            </button>
+            <button class="button button-outline" id="printInvoice">
+              <i class="fas fa-print print-icon"></i> Print Receipt
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Processing Payment Overlay -->
+  <div class="processing-overlay" id="processingOverlay">
+    <div class="processing-content">
+      <div class="processing-spinner">
+        <i class="fas fa-circle-notch"></i>
+      </div>
+      <h3 class="processing-text">Processing Payment</h3>
+      <p class="processing-subtext">Please do not close this window</p>
+      
+      <div class="processing-progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      
+      <div class="processing-steps">
+        <div class="step active" id="step1">
+          <span class="step-icon"><i class="fas fa-spinner fa-spin"></i></span>
+          <span>Initializing payment</span>
+        </div>
+        <div class="step" id="step2">
+          <span class="step-icon"><i class="fas fa-spinner"></i></span>
+          <span>Verifying details</span>
+        </div>
+        <div class="step" id="step3">
+          <span class="step-icon"><i class="fas fa-spinner"></i></span>
+          <span>Processing transaction</span>
+        </div>
+        <div class="step" id="step4">
+          <span class="step-icon"><i class="fas fa-spinner"></i></span>
+          <span>Generating confirmation</span>
+        </div>
+      </div>
+    </div>
   </div>
   
   <script>
@@ -394,25 +719,143 @@
       }, 1000);
     }
     
-    // Initialize timer when page loads
+    // Generate a random transaction ID
+    function generateTransactionId() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let result = 'ICACP25';
+      for (let i = 0; i < 8; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+    
+    // Format current date and time
+    function getCurrentDateTime() {
+      const now = new Date();
+      
+      // Format date
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      
+      // Format time
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const formattedTime = `${hours}:${minutes}:${seconds} IST`;
+      
+      return { date: formattedDate, time: formattedTime };
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+      const colors = ['#5469d4', '#0ead69', '#ffb703', '#e63946', '#2d3f63'];
+      const confettiCount = 100;
+      
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+    
+    // Process payment animation
+    function processPayment() {
+      const overlay = document.getElementById('processingOverlay');
+      const progressBar = document.getElementById('progressBar');
+      const paymentContainer = document.getElementById('paymentContainer');
+      const successPage = document.getElementById('successPage');
+      
+      // Show overlay
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      
+      // Animate progress bar and steps
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += 1;
+        progressBar.style.width = progress + '%';
+        
+        // Update steps based on progress
+        if (progress >= 25) {
+          document.getElementById('step1').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+          document.getElementById('step2').className = 'step active';
+          document.getElementById('step2').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        }
+        if (progress >= 50) {
+          document.getElementById('step2').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+          document.getElementById('step3').className = 'step active';
+          document.getElementById('step3').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        }
+        if (progress >= 75) {
+          document.getElementById('step3').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+          document.getElementById('step4').className = 'step active';
+          document.getElementById('step4').querySelector('.step-icon').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        }
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+          document.getElementById('step4').querySelector('.step-icon').innerHTML = '<i class="fas fa-check step-success"></i>';
+          
+          // After completion, hide overlay and show success page
+          setTimeout(() => {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            paymentContainer.style.display = 'none';
+            successPage.style.display = 'block';
+            createConfetti();
+          }, 500);
+        }
+      }, 30);
+    }
+    
+    // Initialize when page loads
     window.onload = function () {
       const fifteenMinutes = 60 * 15;
       const display = document.querySelector('#timer');
       startTimer(fifteenMinutes, display);
       
-      // Form submission animation
+      // Form submission
       document.getElementById('paymentForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const button = document.getElementById('payButton');
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        button.disabled = true;
         
-        // Simulate form submission (would be replaced with actual payment gateway)
-        setTimeout(function() {
-          alert("This would connect to a payment gateway in a real implementation.");
-          button.innerHTML = 'Proceed to Payment <i class="fas fa-arrow-right"></i>';
-          button.disabled = false;
-        }, 2000);
+        // Get form data
+        const name = document.getElementById('name').value || 'John Doe';
+        const email = document.getElementById('email').value || 'john.doe@example.com';
+        const paperTitle = document.getElementById('paper').value || 'Advances in AI and Cloud Computing';
+        
+        // Update success page with user details
+        document.getElementById('customerName').textContent = name;
+        document.getElementById('customerEmail').textContent = email;
+        document.getElementById('paperTitle').textContent = paperTitle;
+        
+        // Generate transaction ID
+        document.getElementById('transactionId').textContent = generateTransactionId();
+        
+        // Set current date and time
+        const { date, time } = getCurrentDateTime();
+        document.getElementById('paymentDate').textContent = date;
+        document.getElementById('paymentTime').textContent = time;
+        
+        // Start payment processing
+        processPayment();
+      });
+      
+      // Download receipt button (dummy functionality)
+      document.getElementById('downloadInvoice').addEventListener('click', function() {
+        alert('In a real implementation, this would download a PDF receipt.');
+      });
+      
+      // Print receipt button
+      document.getElementById('printInvoice').addEventListener('click', function() {
+        window.print();
       });
     };
   </script>
